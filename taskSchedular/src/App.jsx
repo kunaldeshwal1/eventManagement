@@ -44,11 +44,11 @@ function App() {
       .catch(error => console.error(error));
   };
 
-  // Utility function to format times
+
   function formatTime(time) {
     const [hours, minutes] = time.split(':').map(Number);
     const period = hours >= 12 ? 'PM' : 'AM';
-    const formattedHours = ((hours + 11) % 12 + 1); // Convert to 12-hour format
+    const formattedHours = ((hours + 11) % 12 + 1);
     return `${formattedHours}:${minutes.toString().padStart(2, '0')} ${period}`;
   }
 

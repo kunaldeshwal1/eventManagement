@@ -1,10 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors'); // Import cors package
+const cors = require('cors');
 
 const app = express();
 
-app.use(cors()); // Enable CORS for all origins
+app.use(cors());
 app.use(bodyParser.json());
 
 const PORT = 5000;
@@ -36,7 +36,7 @@ app.get('/events', (req, res) => {
 });
 
 app.post('/events', (req, res) => {
-    const newEvent = { ...req.body, id: events.length + 1 }; // Add unique ID
+    const newEvent = { ...req.body, id: events.length + 1 };
     if (checkConflict(newEvent)) {
         res.status(400).json({ message: 'Event conflicts with an existing event.' });
     } else {
@@ -48,7 +48,7 @@ app.post('/events', (req, res) => {
 app.delete('/events/:id', (req, res) => {
     const { id } = req.params;
     events = events.filter(event => event.id !== parseInt(id, 10));
-    res.status(204).send(); // No content to send back
+    res.status(204).send();
 });
 
 app.listen(PORT, () => {
